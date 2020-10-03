@@ -38,17 +38,22 @@ function createlabel (response) {
     var depth = earthquake.geometry.coordinates[2];
     var longitude = earthquake.geometry.coordinates[0];
     var latitude = earthquake.geometry.coordinates[1];
-    console.log(depth);
-    var quakemarker = L.marker([depth,longitude,latitude]);
+    //console.log(depth);
+    var quakemarker = L.circle([depth,longitude,latitude]),{
+      opacity: 1,
+      fillOpacity: 1,
+      fillColor: red,
+      
+    };
     var place = earthquake.properties.place;
     //console.log(place);
     var magnitude = earthquake.properties.mag;
     var popup = quakemarker.bindPopup(
       "<strong>Place: </strong>" + place + "<strong>Magnitude: </strong>"+ magnitude
     );
-    Markers.push(quakemarker);
+    Markers.push(quakemarker,popup);
   });
-  createMap(L.layergroup(Markers));
+  createMap(L.layerGroup(Markers));
 }
 
   // Perform an API call to the Citi Bike API to get station information. Call createMarkers when complete
