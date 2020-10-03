@@ -7,7 +7,8 @@ __pycache__/
 *.so
 
 #config file
-API_KEY
+config.js
+
 # Distribution / packaging
 .Python
 build/
